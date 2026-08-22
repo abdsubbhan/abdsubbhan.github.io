@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily by ABD Subhan</title>
+    <!-- Pi Network SDK -->
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <style>
+        :root {
+            --bg-color: #0f1115;
+            --card-bg: #181b22;
+            --text-main: #f0f2f5;
+            --text-muted: #9ba1b0;
+            --accent: #d4af37;
+            --border: #282c37;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 10px 40px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .feed {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .quote-text {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .source {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: right;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>The Daily by ABD Subhan</h1>
+            <p class="tagline">Daily reflections, timeless wisdom, Islamic lessons, philosophy, and photography.</p>
+        </header>
+
+        <main class="feed">
+            <!-- Entry 1: Gratitude -->
+            <article class="card">
+                <div class="category">Reflection</div>
+                <p class="quote-text">"Alhamdulillah for every breath, every lesson, and every blessing – seen and unseen."</p>
+                <div class="source">— Daily Reminder</div>
+            </article>
+
+            <!-- Entry 2: Islamic Wisdom -->
+            <article class="card">
+                <div class="category">Quranic Guidance</div>
+                <p class="quote-text">"And be patient, for indeed, Allah does not allow to be lost the reward of those who do good."</p>
+                <div class="source">— Surah Hud (11:115)</div>
+            </article>
+
+            <!-- Entry 3: Philosophy -->
+            <article class="card">
+                <div class="category">Philosophy</div>
+                <p class="quote-text">"You have power over your mind, not outside events. Realize this, and you will find strength."</p>
+                <div class="source">— Marcus Aurelius</div>
+            </article>
+
+            <!-- Entry 4: Mindfulness -->
+            <article class="card">
+                <div class="category">Mindfulness</div>
+                <p class="quote-text">"You can't see people's mental health. Please be kind, always."</p>
+                <div class="source">— Daily Reflection</div>
+            </article>
+        </main>
+
+        <footer>
+            <p>Powered by Pi Network • subhan.pi</p>
+        </footer>
+    </div>
+
+</body>
+</html>
