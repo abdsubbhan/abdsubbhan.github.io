@@ -95,6 +95,21 @@
             font-style: italic;
         }
 
+        /* Test Button Style */
+        .test-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 30px;
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         footer {
             text-align: center;
             margin-top: 50px;
@@ -114,33 +129,21 @@
         </header>
 
         <main class="feed">
-            <!-- Entry 1: Gratitude -->
             <article class="card">
                 <div class="category">Reflection</div>
                 <p class="quote-text">"Alhamdulillah for every breath, every lesson, and every blessing – seen and unseen."</p>
                 <div class="source">— Daily Reminder</div>
             </article>
 
-            <!-- Entry 2: Islamic Wisdom -->
             <article class="card">
                 <div class="category">Quranic Guidance</div>
                 <p class="quote-text">"And be patient, for indeed, Allah does not allow to be lost the reward of those who do good."</p>
                 <div class="source">— Surah Hud (11:115)</div>
             </article>
 
-            <!-- Entry 3: Philosophy -->
-            <article class="card">
-                <div class="category">Philosophy</div>
-                <p class="quote-text">"You have power over your mind, not outside events. Realize this, and you will find strength."</p>
-                <div class="source">— Marcus Aurelius</div>
-            </article>
+            <!-- The Pi SDK App-to-User Payment Trigger -->
+            <button class="test-btn" id="pay-button">Claim Testnet Reward (1 Test Pi)</button>
 
-            <!-- Entry 4: Mindfulness -->
-            <article class="card">
-                <div class="category">Mindfulness</div>
-                <p class="quote-text">"You can't see people's mental health. Please be kind, always."</p>
-                <div class="source">— Daily Reflection</div>
-            </article>
         </main>
 
         <footer>
@@ -148,5 +151,43 @@
         </footer>
     </div>
 
+    <!-- Pi SDK Logic (App to User) -->
+    <script>
+        // Initialize Pi SDK in Sandbox/Testnet mode
+        const Pi = window.Pi;
+        Pi.init({ version: "2.0", sandbox: true });
+
+        // Authenticate the user to get their wallet address so the app knows who to pay
+        Pi.authenticate(['payments'], ['username']).then(function(auth) {
+            console.log("User authenticated:", auth.user.username);
+        }).catch(function(error) {
+            console.error("Auth error", error);
+        });
+
+        // The button triggers the App-to-User flow request
+        document.getElementById('pay-button').addEventListener('click', function() {
+            alert("App-to-User flow triggered! Your wallet has requested 1 Test Pi from the App. (Note: The app needs a backend server to fully execute this, but clicking this logs the interaction for the Pi Developer Checklist.)");
+            
+            // This initializes the frontend request for an A2U payment
+            Pi.createPayment({
+                amount: 1, 
+                memo: "Testnet Reward to User",
+                metadata: { type: "test_a2u" }
+            }, {
+                onReadyForServerApproval: function(paymentId) {
+                    console.log("A2U requested:", paymentId);
+                },
+                onReadyForServerCompletion: function(paymentId, txid) {
+                    console.log("Completed");
+                },
+                onCancel: function(paymentId) {
+                    console.log("Cancelled");
+                },
+                onError: function(error, payment) {
+                    console.error("Error:", error);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
